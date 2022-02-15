@@ -2,13 +2,15 @@
   "name": "hype",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "analyze": "webpack-bundle-analyzer dist/hype/stats.json",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "build:stats": "npm run build --stats-json",
+    "lint": "ng lint",
+    "ng": "ng",
     "prepare": "husky install",
-    "lint": "ng lint"
+    "start": "ng serve",
+    "test": "ng test",
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
@@ -50,8 +52,10 @@
     "prettier": "^2.5.1",
     "stylelint": "^14.5.0",
     "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^7.0.0",
     "stylelint-config-standard": "^25.0.0",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "lint-staged": {
     "*.{ts, html}": "eslint --cache --fix",
