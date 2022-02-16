@@ -135,6 +135,9 @@ module.exports = {
                 hoist: "all",
             },
         ],
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unused-expressions": "error",
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-var-requires": "off",
@@ -142,6 +145,7 @@ module.exports = {
         "@typescript-eslint/prefer-function-type": "error",
         "@typescript-eslint/prefer-namespace-keyword": "error",
         "@typescript-eslint/quotes": ["error", "single"],
+        "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/semi": ["error", "always"],
         "@typescript-eslint/triple-slash-reference": [
             "error",

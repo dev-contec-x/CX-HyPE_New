@@ -1,14 +1,23 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 
-import { MonitorInterceptor } from './interceptor/monitor.interceptor';
+import { MonitorInterceptor } from '@core/interceptors/monitor.interceptor';
+
+import { CoreRoutingModule } from '@core/core-routing.module';
+
+import { EnsureModuleLoadedOnceGuard } from '@core/guards/singleton-module.base';
+
+import { SharedModule } from '@shared/shared.module';
+
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    CoreRoutingModule,
+    SharedModule
   ],
   providers: [
     {
@@ -18,4 +27,8 @@ import { MonitorInterceptor } from './interceptor/monitor.interceptor';
     }
   ]
 })
-export class CoreModule { }
+export class CoreModule extends EnsureModuleLoadedOnceGuard {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    super(parentModule);
+  }
+}
