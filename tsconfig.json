@@ -18,9 +18,9 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
+      "@conf/*": ["src/app/configs/*"],
       "@core/*": ["src/app/core/*"],
       "@env/*": ["src/environments/*"],
-      "@models/*": ["src/app/models/*"],
       "@shared/*": ["src/app/shared/*"],
       "@store/*": ["src/app/utils/*"],
       "@utils/*": ["src/app/utils/*"]
