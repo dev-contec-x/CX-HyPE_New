@@ -22,7 +22,7 @@
       "@core/*": ["src/app/core/*"],
       "@env/*": ["src/environments/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@store/*": ["src/app/utils/*"],
+      "@store/*": ["src/app/store/*"],
       "@utils/*": ["src/app/utils/*"]
     },
   },
