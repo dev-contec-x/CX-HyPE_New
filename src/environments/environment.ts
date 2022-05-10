@@ -1,5 +1,5 @@
 export const environment = {
-  mode: process.env.NODE_ENV,
+  mode: 'development',
   name: 'development',
   production: false
 };
