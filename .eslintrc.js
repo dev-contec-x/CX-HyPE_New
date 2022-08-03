@@ -7,12 +7,12 @@ module.exports = {
     extends: [
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier"
     ],
     parser: "@typescript-eslint/parser",
     ignorePatterns: ["**/*.spec.ts", ".eslintrc.js"],
     parserOptions: {
         project: "tsconfig.json",
-
         sourceType: "module",
     },
     plugins: [
@@ -29,7 +29,9 @@ module.exports = {
             "error",
             {
                 type: "element",
-                prefix: "app",
+                prefix: [
+                    "hype"
+                ],
                 style: "kebab-case",
             },
         ],

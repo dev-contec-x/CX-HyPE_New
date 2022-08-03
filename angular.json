@@ -3,7 +3,8 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hype": {
+    "HyPE4PM": {
+      "prefix": "hype",
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -15,27 +16,56 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hype",
-            "aot": true,
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "./src/meta/",
+                "output": "./meta/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./src/assets/images/",
+                "output": "./assets/images/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./src/assets/fonts/",
+                "output": "./assets/fonts/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./src/assets/icons/",
+                "output": "./assets/icons/"
+              },
+              "src/assets/favicon.ico",
+              "src/manifest.webmanifest"
+            ],
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/assets/favicon.ico", "src/assets"],
-            "styles": ["src/assets/styles/base.scss"],
+            "main": "src/main.ts",
+            "namedChunks": true,
+            "outputPath": "dist",
+            "polyfills": "src/polyfills.ts",
+            "scripts": [],
+            "styles": [
+              "src/assets/styles/base.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles"]
+              "includePaths": ["src/assets/styles"]
             },
-            "scripts": []
+            "tsConfig": "tsconfig.app.json",
+            "vendorChunk": true,
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
+              "aot": true,
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
@@ -48,21 +78,30 @@
                   "maximumError": "4kb"
                 }
               ],
+              "buildOptimizer": true,
+              "extractLicenses": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "ngswConfigPath": "ngsw-config.json",
+              "optimization": true,
+              "outputHashing": "all",
+              "serviceWorker": true,
+              "sourceMap": false
             },
             "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "optimization": false, 
+              "sourceMap": true
+            },
+            "dev4Prod": {
+              "baseHref": "/niku/custom/backlogBoard/"
+            },
+            "es5": {
+              "tsConfig": "./tsconfig.es5.json"
             }
           },
           "defaultConfiguration": "production"
@@ -70,14 +109,20 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "hype:build:production"
-            },
             "development": {
               "browserTarget": "hype:build:development"
+            },
+            "es5": {
+              "browserTarget": "HyPE4PM:build:es5"
+            },
+            "production": {
+              "browserTarget": "hype:build:production"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 3000
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -87,24 +132,35 @@
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
+          "configurations": {
+            "development": {
+              "karmaConfig": "src/karma.conf.js"
+            },
+            "production": {
+              "karmaConfig": "src/karma-prod.conf.js"
+            }
+          },
           "options": {
+            "assets": [
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/manifest.webmanifest"
+            ],
+            "inlineStyleLanguage": "scss",
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": ["src/assets/favicon.ico", "src/assets"],
+            "scripts": [],
             "styles": ["src/assets/styles/base.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
-            "scripts": []
+            "tsConfig": "tsconfig.spec.json"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": ["src/**/*.ts"]
           }
         }
       }

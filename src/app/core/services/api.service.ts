@@ -8,6 +8,7 @@ import { Constants } from '@conf/constants';
 
 @Injectable()
 export class ApiService {
+  apiRoot = 'cx-hype-service';
 
   /*
     public getNewsEndpoint(): string {
@@ -68,21 +69,21 @@ export class ApiService {
 
   private get(url: string, options?: any) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return this.http.get(url, options);
+    return this.http.get(`${this.apiRoot}/${url}`, options);
   }
 
   private post(url: string, data: any, options?: any) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return this.http.post(url, data, options);
+    return this.http.post(`${this.apiRoot}/${url}`, data, options);
   }
 
   private put(url: string, data: any, options?: any) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return this.http.put(url, data, options);
+    return this.http.put(`${this.apiRoot}/${url}`, data, options);
   }
 
   private delete(url: string, options?: any) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return this.http.delete(url, options);
+    return this.http.delete(`${this.apiRoot}/${url}`, options);
   }
 }
