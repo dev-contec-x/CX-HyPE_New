@@ -40,7 +40,7 @@
     "@angular/material-moment-adapter": "^14.1.0",
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
-    "@angular/pwa": "^13.3.5",
+    "@angular/pwa": "^14.1.0",
     "@angular/router": "^14.1.0",
     "@angular/service-worker": "^14.1.0",
     "@compodoc/compodoc": "^1.1.19",
