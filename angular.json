@@ -55,7 +55,9 @@
               "src/assets/styles/base.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/assets/styles"]
+              "includePaths": [
+                "src/assets/styles"
+              ]
             },
             "tsConfig": "tsconfig.app.json",
             "vendorChunk": true,
@@ -94,14 +96,11 @@
             },
             "development": {
               "extractLicenses": false,
-              "optimization": false, 
+              "optimization": false,
               "sourceMap": true
             },
             "dev4Prod": {
               "baseHref": "/niku/custom/backlogBoard/"
-            },
-            "es5": {
-              "tsConfig": "./tsconfig.es5.json"
             }
           },
           "defaultConfiguration": "production"
@@ -111,9 +110,6 @@
           "configurations": {
             "development": {
               "browserTarget": "hype:build:development"
-            },
-            "es5": {
-              "browserTarget": "HyPE4PM:build:es5"
             },
             "production": {
               "browserTarget": "hype:build:production"
@@ -150,9 +146,13 @@
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "scripts": [],
-            "styles": ["src/assets/styles/base.scss"],
+            "styles": [
+              "src/assets/styles/base.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles"]
+              "includePaths": [
+                "src/styles"
+              ]
             },
             "tsConfig": "tsconfig.spec.json"
           }
@@ -160,14 +160,17 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts"]
+            "lintFilePatterns": [
+              "src/**/*.ts"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "hype",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
