@@ -14,18 +14,36 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "types": ["node"],
+    "target": "ES2022",
+    "types": [
+      "node"
+    ],
     "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "paths": {
-      "@conf/*": ["src/app/configs/*"],
-      "@core/*": ["src/app/core/*"],
-      "@env/*": ["src/environments/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@store/*": ["src/app/store/*"],
-      "@utils/*": ["src/app/utils/*"]
+      "@conf/*": [
+        "src/app/configs/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@store/*": [
+        "src/app/store/*"
+      ],
+      "@utils/*": [
+        "src/app/utils/*"
+      ]
     },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
